@@ -6,29 +6,19 @@ define('ID_ROLE', 1);
 
 $req = db()->prepare("INSERT INTO users(idUser, lastName, firstName, password, email,  IdRole) 
 VALUES(null, :lastName, :firstName, :password, :mail, :idRole)");
-$hash = password_hash($_POST['pwd2'], PASSWORD_BCRYPT);
-$req->execute(array(
-	'lastName' => $_POST['lastName'],
-	'firstName' => $_POST['firstName'],
-	'password' => $hash,
-	'mail' => $_POST['mail'],
-	'idRole' => ID_ROLE,
-));
+$hash1 = password_hash($_POST['pwd1'], PASSWORD_BCRYPT);
+$hash2 = password_hash($_POST['pwd2'], PASSWORD_BCRYPT);
 
-
-$user = $req->fetch();
-if ($user === false) {
-    header("Location: Connexion.php");
-    exit;
+if($hash1===$hash2){
+	$req->execute(array(
+		'lastName' => $_POST['lastName'],
+		'firstName' => $_POST['firstName'],
+		'password' => $hash,
+		'mail' => $_POST['mail'],
+		'idRole' => ID_ROLE,
+	));
 }
-
-$ok = password_verify($_POST["password"], $hash);
-
-if (!$ok) {
-    header("Location: Connexion.php?error=invalid_password");
-    exit;
-}
-
-$_SESSION["user"] = $user;
-header("Location: Connexion.php");
+else{
+	header("Location: Projet_Web_Serveur/templates/Inscription?error=les mots de passes ne sont pas identiques");
+	}
 exit;

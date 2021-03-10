@@ -26,7 +26,7 @@ $arrayPath = array (
     '/Inscription' => './templates/Inscription.php',
     '/CreerUneElection' => './templates/CreerUneElection.php',
     '/process_login' => './templates/process_login.php',
-    '/process_Inscription' => './templates/process_Inscription.php',
+    '/process_Inscription.php' => './templates/process_Inscription.php',
     '/deconnexion' => './templates/deconnexion.php'
 
     );

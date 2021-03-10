@@ -36,6 +36,9 @@ session_start();
 								<label>adresse mail * : </label><input type="email" name="mail" size=25/><br><br>
 								<label>votre mot de passe * : </label><input type="password" name="pwd1" size=25/><br><br>
 								<label>tapez à nouveau votre mot de passe * : </label><input type="password" name="pwd2" size=25/><br><br>
+								<?php if (isset($_GET["error"])) { ?>
+								<p><?= $_GET["error"] ?></p>
+								<?php } ?>
 								<input type="submit" value="VALIDER"/>
 							</form>
 						</p>
