@@ -1,34 +1,42 @@
 <?php
-//include 'config.php';
+
+session_start();
 
 
 $databaseConnexion = null;
 
 $config = require('config.php');
 
+
 function db(){
+    global $config;
     global $databaseConnexion;
     if($databaseConnexion === null){
-        $databaseConnexion = new PDO($config['hostname'],$config['dbname'],$config['port'], $config['username'], $config['password'], [
+        $dsn = "mysql:hostname={$config['database']['hostname']};dbname={$config['database']['dbname']};port={$config['database']['port']}";
+        $databaseConnexion = new PDO($dsn, $config['database']['username'], $config['database']['password'], [
             \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
         ]);
     }
     return $databaseConnexion;
 }
 
-function route($path) {
+
+
+function route($routes) {
     global $config;
+    if(!isset($routes))
+        throw new Exception()
     return $config['uri_prefix'].$path;
 }
 
 $arrayPath = array (
     '/' => 'login.php',
     '/connexion' => 'login.php',
-    '/inscription' => 'registration.php',
+    '/registration' => 'registration.php',
     '/creerUneElection' => 'createElection.php',
-    '/processLogin' => 'loginProcess.php',
+    '/loginProcess' => 'loginProcess.php',
     '/processInscription' => 'registrationProcess.php',
-    '/deconnexion' => 'logout.php'
+    '/logout' => 'logout.php'
 
     );
 

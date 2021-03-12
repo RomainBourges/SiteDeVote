@@ -1,6 +1,6 @@
 
 <?php
-session_start();
+
 
 define('ID_ROLE', 1);
 

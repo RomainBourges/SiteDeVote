@@ -1,5 +1,4 @@
 <?php
-session_start();
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +14,7 @@ session_start();
 				</header>
 
 				<p>Connecté en tant que <?= $_SESSION['user']['LastName']. ' '. $_SESSION['user']['FirstName'] ?></p>
-				<form action="deconnexion.php" method="POST">
+				<form action="<?php route('logout') ?>" method="POST">
 				<input type="submit" value="Se déconnecter" /><br><br>
 				</form>
 			</div>
@@ -30,7 +29,7 @@ session_start();
 							<h2>Inscription</h2>
 						</header>
 						<p>
-							<form action ="process_Inscription.php" method="POST">
+							<form action ="<?php route('registrationProcess') ?>" method="POST">
 								<label>Nom * : </label><input  type="text" name="lastName" size=25 /><br><br>
 								<label>prénom * : </label><input type="text" name="firstName" size=25/><br><br>
 								<label>adresse mail * : </label><input type="email" name="mail" size=25/><br><br>

@@ -1,6 +1,4 @@
-<?php
-//session_start();
-?>
+
 
 <!DOCTYPE html>
 <html>
@@ -24,7 +22,7 @@
 						<h2>Connexion</h2>
 					</header>
 					<p>
-						<form action="loginProcess.php" method="POST">
+						<form action="<?= route('/loginProcess') ?>" method="POST">
 							<label>E-mail * : </label><input type="email" name="email" size=25/><br><br>
 							<label>Mot de passe * : </label><input type="password" name="pwd" size=25/><br>
 							<?php if (isset($_GET["error"])) { ?>

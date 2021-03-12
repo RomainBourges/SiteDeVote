@@ -1,12 +1,5 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Connexion</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="assets/css/main.css" />
-    </head>
-
+<body>
     <footer id="footer">
         <div class="inner">
             <ul class="icons">
@@ -28,4 +21,4 @@
             </ul>
         </div>
     </footer>
-</html>
+</body>
