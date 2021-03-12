@@ -7,4 +7,4 @@ session_start();
 
 $_SESSION['user'] = null;
 
-header("Location: Connexion.php");
+header("Location: login.php");

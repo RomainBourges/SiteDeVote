@@ -1,5 +1,15 @@
 <?php
-$config = [
-    'URI_PREFIX' => '/Projet_Web_Serveur'
-];
+
+return [
+	'uri_prefix' => '/Projet_Web_Serveur',
+	'database' => [
+		'hostname' => 'localhost',
+		'dbname' => 'election',
+		'port' => '3306',
+		'username' => 'root',
+		'password' => ''
+	] 
+	
+
+]
 ?>

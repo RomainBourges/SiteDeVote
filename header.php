@@ -15,9 +15,9 @@
 
     <nav id="nav">
         <ul class="links">
-            <li><a href="<?= route("/Connexion") ?>">Connexion</a></li>
-            <li><a href="<?= route("/Inscription")?>">Inscription</a></li>
-            <li><a href="<?= route("/CreerUneElection")?>">Créer une élection</a></li>
+            <li><a href="<?= route("/connexion") ?>">Connexion</a></li>
+            <li><a href="<?= route("/inscription")?>">Inscription</a></li>
+            <li><a href="<?= route("/creerUneElection")?>">Créer une élection</a></li>
         </ul>
     </nav>
 

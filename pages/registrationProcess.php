@@ -18,17 +18,17 @@ $req->execute(array(
 
 $user = $req->fetch();
 if ($user === false) {
-    header("Location: Connexion.php");
+    header("Location: login.php");
     exit;
 }
 
 $ok = password_verify($_POST["password"], $hash);
 
 if (!$ok) {
-    header("Location: Connexion.php?error=invalid_password");
+    header("Location: login.php?error=invalid_password");
     exit;
 }
 
 $_SESSION["user"] = $user;
-header("Location: Connexion.php");
+header("Location: login.php");
 exit;
