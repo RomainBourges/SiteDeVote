@@ -14,17 +14,19 @@ $stmt->execute([
 
 $user = $stmt->fetch();
 if ($user === false) {
-    header("Location: login.php?error=unknown_user");
+	$_SESSION["error"] = "Utilisateur inconnu";
+    header("Location:".route('/login'));
     exit;
 }
 
 $ok = password_verify($_POST['pwd'], $user['Password']);
 
 if (!$ok) {
-    header("Location: login.php?error=invalid_password");
+	$_SESSION["error"] = "Mot de passe invalide";
+    header("Location:".route('/login'));
     exit;
 }
 
 $_SESSION['user'] = $user;
-header("Location: login.php");
+header("Location:".route('/login'));
 exit;

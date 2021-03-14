@@ -25,17 +25,17 @@ function db(){
 function route($routes) {
     global $config;
     if(!isset($routes))
-        throw new Exception()
-    return $config['uri_prefix'].$path;
+        throw new Exception("Wrong path");
+    return $config['uri_prefix'].$routes;
 }
 
-$arrayPath = array (
+$routes = array (
     '/' => 'login.php',
-    '/connexion' => 'login.php',
+    '/login' => 'login.php',
     '/registration' => 'registration.php',
-    '/creerUneElection' => 'createElection.php',
+    '/createElection' => 'createElection.php',
     '/loginProcess' => 'loginProcess.php',
-    '/processInscription' => 'registrationProcess.php',
+    '/registrationProcess' => 'registrationProcess.php',
     '/logout' => 'logout.php'
 
     );
@@ -46,9 +46,9 @@ require ('./header.php');
 
 $load = false;
 
-foreach($arrayPath as $key => $value) {
+foreach($routes as $key => $value) {
     if (isset($request) && $config['uri_prefix'].$key === $request){
-        require ('./pages/'.$arrayPath[$key]);
+        require ('./pages/'.$routes[$key]);
         $load = true;
         break;
     }

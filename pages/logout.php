@@ -5,4 +5,4 @@
 
 $_SESSION['user'] = null;
 
-header("Location: login.php");
+header("Location: " . route('/login'));
