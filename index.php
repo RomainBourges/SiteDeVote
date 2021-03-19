@@ -1,13 +1,24 @@
 <?php
-
 session_start();
+include('pages/routes.php');
 
-$flash = $_SESSION['flash'];
-unset($_SESSION['flash']);
-
+if (isset($_SESSION['flash'])){
+    $flash = $_SESSION['flash'];
+}
+    
 $config = require('config.php');
 
 $databaseConnexion = null;
+
+$request = $_SERVER['REQUEST_URI'];
+
+require ('./header.php');
+$requestURI = $_SERVER['REQUEST_URI'];
+$requestURI = substr($requestURI, strlen($config['uri_prefix']));
+$handler = $routes[$requestURI];
+if(!isset($handler)){
+    http_response_code(404);
+}
 
 function db(){
     global $config;
@@ -21,45 +32,6 @@ function db(){
     return $databaseConnexion;
 }
 
-
-
-function route($route) {
-    global $config;
-    if(!isset($route)){
-        return;
-    }
-    return $config['uri_prefix'].$route;
-}
-
-$routes = array (
-    '/' => 'login',
-    '/login' => 'login',
-    '/registration' => 'registration',
-    '/createElection' => 'createElection',
-    '/loginProcess' => 'loginProcess',
-    '/registrationProcess' => 'registrationProcess',
-    '/logout' => 'logout'
-
-    );
-
-$request = $_SERVER['REQUEST_URI'];
-
-require ('./header.php');
-
-$load = false;
-
-
-// corriger la boucle 
-foreach($arrayPath as $key => $value) {
-    if (isset($request) && $config['uri_prefix'].$key === $request){
-        require ('./pages/'.$arrayPath[$key].'.php');
-        $load = true;
-        break;
-    }
- }
-
-if(!$load){
-    require ('./404.php');
-}
-
+require("pages/$handler.php");
 require('./footer.php');
+unset($_SESSION['flash']);

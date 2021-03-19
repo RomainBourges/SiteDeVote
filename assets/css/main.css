@@ -13,6 +13,10 @@
 		vertical-align: baseline;
 	}
 
+	.spaces :nth-child(2n) {
+		margin-bottom: 20px;
+	}
+
 	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 		display: block;
 	}

@@ -1,4 +1,5 @@
 <?php
+$config = require('config.php');
 
 $stmt = db()->prepare("
 	SELECT *
@@ -13,7 +14,7 @@ $stmt->execute([
 
 $user = $stmt->fetch();
 if ($user === false) {
-	$_SESSION['flash']['error'] = "L’e-mail entré ne correspond à aucun compte <a href=".route('/registration').">Veuillez créer un compte.</a>";
+	$_SESSION['flash']['error'] = $config['error']['unknown_user'];
     header("Location:".route('/login'));
     exit;
 }
@@ -21,7 +22,7 @@ if ($user === false) {
 $ok = password_verify($_POST['pwd'], $user['Password']);
 
 if (!$ok) {
-	$_SESSION['error'] = "Le mot de passe entré est incorrect";
+	$_SESSION['flash']['error'] = $config['error']['unknown_password'];
     header("Location:".route('/login'));
     exit;
 }

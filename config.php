@@ -5,15 +5,14 @@ return [
 	'database' => [
 		'hostname' => 'localhost',
 		'dbname' => 'election',
-		'port' => '3306',
+		'port' => '3307',
 		'username' => 'root',
-		'password' => 'root'
+		'password' => ''
 	], 
 	'error' => [
-		'unknown_password' => 'Mot de passe invalide',
-		'unknown_user' => 'Utilisateur inconnu'
+		'unknown_password' => 'Le mot de passe entré est incorrect',
+		'unknown_user' => 'L’e-mail entré ne correspond à aucun compte'
 	]
-	
-
 ]
+
 ?>
