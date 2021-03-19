@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<body>
     <footer id="footer">
         <div class="inner">
             <ul class="icons">
@@ -22,3 +20,4 @@
         </div>
     </footer>
 </body>
+</html>

@@ -2,11 +2,12 @@
 
 session_start();
 
-
-$databaseConnexion = null;
+$flash = $_SESSION['flash'];
+unset($_SESSION['flash']);
 
 $config = require('config.php');
 
+$databaseConnexion = null;
 
 function db(){
     global $config;
@@ -22,21 +23,22 @@ function db(){
 
 
 
-function route($routes) {
+function route($route) {
     global $config;
-    if(!isset($routes))
-        throw new Exception("Wrong path");
-    return $config['uri_prefix'].$routes;
+    if(!isset($route)){
+        return;
+    }
+    return $config['uri_prefix'].$route;
 }
 
 $routes = array (
-    '/' => 'login.php',
-    '/login' => 'login.php',
-    '/registration' => 'registration.php',
-    '/createElection' => 'createElection.php',
-    '/loginProcess' => 'loginProcess.php',
-    '/registrationProcess' => 'registrationProcess.php',
-    '/logout' => 'logout.php'
+    '/' => 'login',
+    '/login' => 'login',
+    '/registration' => 'registration',
+    '/createElection' => 'createElection',
+    '/loginProcess' => 'loginProcess',
+    '/registrationProcess' => 'registrationProcess',
+    '/logout' => 'logout'
 
     );
 
@@ -46,9 +48,11 @@ require ('./header.php');
 
 $load = false;
 
-foreach($routes as $key => $value) {
+
+// corriger la boucle 
+foreach($arrayPath as $key => $value) {
     if (isset($request) && $config['uri_prefix'].$key === $request){
-        require ('./pages/'.$routes[$key]);
+        require ('./pages/'.$arrayPath[$key].'.php');
         $load = true;
         break;
     }
