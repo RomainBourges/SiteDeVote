@@ -7,15 +7,13 @@ if (isset($_SESSION['flash'])){
 }
     
 $config = require('config.php');
-
-$databaseConnexion = null;
-
 $request = $_SERVER['REQUEST_URI'];
 
 require ('./header.php');
 $requestURI = $_SERVER['REQUEST_URI'];
 $requestURI = substr($requestURI, strlen($config['uri_prefix']));
 $handler = $routes[$requestURI];
+
 if(!isset($handler)){
     http_response_code(404);
 }

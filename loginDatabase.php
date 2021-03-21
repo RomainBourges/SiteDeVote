@@ -1,4 +1,5 @@
 <?php
+$databaseConnexion = null;
 
 global $config;
 global $databaseConnexion;

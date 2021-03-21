@@ -13,8 +13,6 @@
 
     </head>
     <body>
-        
-
         <header id="header">
             <h1><a href="">Site de vote en ligne</a></h1>
             <a href="#nav">Menu</a>
