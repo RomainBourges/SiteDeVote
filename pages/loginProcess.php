@@ -1,7 +1,8 @@
 <?php
 $config = require('config.php');
+$db = require('loginDatabase.php');
 
-$stmt = db()->prepare("
+$stmt = $db ->prepare("
 	SELECT *
 	FROM users 
 	WHERE email = :email
@@ -28,7 +29,7 @@ if (!$ok) {
 }
 
 $_SESSION['user'] = $user;
-header("Location:".route('/login'));
+header("Location:".route('/home'));
 exit;
 
 

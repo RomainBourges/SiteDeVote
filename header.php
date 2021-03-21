@@ -1,9 +1,3 @@
-<?php 
-function make_item(string $expectedRoute, string $title) :string{
-    return '<li><a href="'.route($expectedRoute).'">'.$title.'</a></li>';
-}
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,8 +22,10 @@ function make_item(string $expectedRoute, string $title) :string{
 
         <nav id="nav">
             <ul class="links">
-              <?= make_item('/login', 'Connexion'); ?>
-              <?= make_item('/registration', 'Inscription'); ?>
-              <?= make_item('/createElection', 'Creer une election'); ?>
+              <?php
+                foreach($routesMenu as $key => $values){
+                    echo '<li><a href="'.route($key).'">'.$values.'</a></li>';
+                }
+              ?>
             </ul>
         </nav>

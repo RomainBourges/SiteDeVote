@@ -11,10 +11,17 @@ function route($route) {
 $routes = array (
     '/' => 'login',
     '/login' => 'login',
+    '/home' => 'home',
     '/registration' => 'registration',
     '/createElection' => 'createElection',
     '/loginProcess' => 'loginProcess',
     '/registrationProcess' => 'registrationProcess',
     '/logout' => 'logout'
 
+    );
+
+$routesMenu = array (
+    '/login' => 'Connexion',
+    '/registration' => 'Inscription',
+    '/createElection' => 'Créer une élection'
     );
