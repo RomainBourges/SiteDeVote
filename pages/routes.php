@@ -25,3 +25,4 @@ $routesMenu = array (
     '/registration' => 'Inscription',
     '/createElection' => 'Créer une élection'
     );
+    

@@ -31,7 +31,3 @@ if (!$ok) {
 $_SESSION['user'] = $user;
 header("Location:".route('/home'));
 exit;
-
-
-
-

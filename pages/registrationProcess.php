@@ -18,5 +18,3 @@ $req->execute(array(
 ));
 
 header("Location:".route('/login'));
-
-
