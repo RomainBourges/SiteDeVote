@@ -9,7 +9,14 @@ $firstName = $_SESSION['user']['FirstName'];
 			<h2>Connexion</h2>
 		</header>
 			<p>Connecté en tant que <?= $lastName. ' '. $firstName ?></p>
-			<p><h1>Bientôt votre site de vote en ligne ... J-45 !</h1></p>
+			<p><h1>Votre site de vote sera bientot opérationnel, maintenance terminée dans J - 
+			<?php
+			$origin = new DateTime("now");
+			$target = new DateTime('2021-04-16');
+			$interval = $origin->diff($target);
+			echo $interval->format('%a jours');
+			?>
+			</h1></p>
 		<form action="<?= route('/logout') ?>" method="POST">
 			<input type="submit" value="Se déconnecter" />
 		</form>
